@@ -1,0 +1,32 @@
+*{ 
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+h1{
+    color: white;
+    min-height: 3em;
+    padding-top:1.3em;
+}
+h2{color: #B35358;}
+body{background-color: #ECF0F1;}
+
+header {
+    background-color: #E84C3D;
+    width: 100%;
+   
+    
+}
+
+
+.conteneur{
+    display: grid;
+    grid-template-columns: 3fr 3fr 3fr;
+    background-color: white;
+    
+    
+}
+.pic{
+    max-width: 100%;
+    max-height: 300px;
+}
