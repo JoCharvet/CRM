@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://unpkg.com/vue@next" defer></script>
+        <script src="main.js" defer></script>
+        <title>Vue</title>
+    </head>
+    <body>
+        <header>
+
+        </header>
+        <main id="app">
+            <h1>The CheckList</h1>
+            
+            <ajout @nouvellenote="ajouterNote"></ajout>
+            <note v-for="todo in todos" v-bind:content="todo" @click="inerser" ></note>
+        </main>
+        <footer>
+
+        </footer>
+</body>
+</html>
