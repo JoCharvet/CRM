@@ -1,0 +1,2 @@
+C:\Users\Charv\Desktop\cours\CRM\CRM\presentation\Repository\Repository\obj\Debug\Repository.csprojAssemblyReference.cache
+C:\Users\Charv\Desktop\cours\CRM\CRM\presentation\Repository\Repository\obj\Debug\Repository.csproj.CoreCompileInputs.cache
