@@ -17,7 +17,7 @@ namespace Repository2
             Console.ReadKey();
             repository.Read();
             repository.Update(1, new Person(1, "George"));
-            Console.WriteLine("Modification de a première entré par George");
+            Console.WriteLine("Modification de la première entrée par George");
             Console.ReadKey();
             repository.Read();
         }
