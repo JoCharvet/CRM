@@ -10,6 +10,7 @@ namespace Repository2
 {
     class PersonRepository : IRepository<Person>
     {
+        // accsès au données
         List<Person> persons = new List<Person>();
 
         public PersonRepository()
@@ -21,6 +22,10 @@ namespace Repository2
             persons.Add(new Person(5, "Juliette"));
         }
 
+
+        /// <summary>
+        /// Differentes méthodes du CRUD  imposé par l'interface IRepository
+        /// </summary>
         public void Read()
         {
             
@@ -41,7 +46,6 @@ namespace Repository2
         public void Delete(Person p)
         {
             persons.Remove(p);
-            
         }
 
         public void Update(int pId , Person np)

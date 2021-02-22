@@ -8,11 +8,12 @@ namespace Repository2
         {
             IRepository<Person> repository = new PersonRepository();
             repository.Read();
-            repository.Add(new Person(6,"Julie"));
+            Person julie = new Person(6, "Julie");
+            repository.Add(julie);
             Console.WriteLine("Ajout de Julie");
             Console.ReadKey();
             repository.Read();
-            repository.Delete(new Person(6, "Julie"));
+            repository.Delete(julie);
             Console.WriteLine("Suppression de Julie");
             Console.ReadKey();
             repository.Read();
