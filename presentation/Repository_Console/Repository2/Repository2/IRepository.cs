@@ -6,7 +6,7 @@ namespace Repository2
 {
     interface IRepository<T> where T:Person
     {
-        // CRUD
+        // contrat CRUD
         void Read();
         void Add(T p);
         void Delete(T p);

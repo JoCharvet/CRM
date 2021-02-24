@@ -21,8 +21,6 @@ namespace Repository2
             persons.Add(new Person(4, "Jamie"));
             persons.Add(new Person(5, "Juliette"));
         }
-
-
         /// <summary>
         /// Differentes méthodes du CRUD  imposé par l'interface IRepository
         /// </summary>
@@ -33,8 +31,7 @@ namespace Repository2
                 {
                 Console.WriteLine(person.Id + " " + person.name);
                 }
-            
-
+  
         }
 
         public void Add(Person p)
