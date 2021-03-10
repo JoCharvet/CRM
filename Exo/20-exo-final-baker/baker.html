@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Baker</title>
+        <link rel="stylesheet" href="baker.css">
+        <script src="https://unpkg.com/vue@next" defer></script>
+        <script src="baker.js" type="module" defer></script>
+    </head>
+
+    <body>
+      <div class="conteneur">
+        <main id="app">
+            <div id="boulanger"class="contenu">
+                <h1>Le Boulanger</h1>
+                <table>
+                    <tr>
+                        <th>Or gagné</th>
+                        <th>Or dépensé</th>
+                        <th>Farine produite</th>
+                        <th>Baguetttes produites</th>
+                    </tr>
+                    <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="boulangerie" class="contenu ">
+                <div class="entete">
+                    <h2>Boulangerie</h2>
+                    <button id="demarrer">Ouvrir la boulangerie</button>
+                </div>
+                <div class="corp">
+                    <img src="assets/baker.jpg" alt="Une boulangerie">
+                    
+                        <table>
+                            <tr>
+                                <th>Niveau</th>
+                                <td> ⚡</td>
+                                <td><button class="plus">+</button></td>
+                                <td>💰</td>
+                            </tr>
+                            <tr>
+                                <th>Moulins</th>
+                                <td>    <img id="moulinImg" src="assets/mill.png"></td>
+                                <td><button class="plus">+</button></td>
+                                <td>💰</td>
+                            </tr>
+                            <tr>
+                                <th>Or</th>
+                                <td>💰</td>
+                            </tr>
+                            <tr>
+                                <th>Farine</th>
+                                <td>🥌</td>
+                            </tr>
+                            <tr>
+                                <th>Baguettes</th>
+                                <td>🥖</td>
+                            </tr>
+                        </table>
+
+                    
+                </div>
+
+            </div>
+            <div id="commandes" class="contenu ">
+                <div class="entete">
+                    <h2>Commandes</h2>
+                    <table>
+                        <tr>
+                            <th>📲</th>
+                            <th>🥖</th>
+                            <th>💰\🥖</th>
+                            <th>💰💰💰</th>
+                            <th>🕗</th>
+                            <th>🗣</th>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>En attente...</td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>En attente...</td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>En attente...</td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>En attente...</td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>En attente...</td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>En attente...</td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>En attente...</td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>En attente...</td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>En attente...</td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>En attente...</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+            <div id="log" class="contenu">
+                <div class="entete">
+                    <h2>Log</h2>
+                </div>
+                <textarea disabled ></textarea>
+
+            </div>
+        </main>
+
+        <footer>
+            <a href="http://www.arfp.asso.fr">Centre de Réadaptation de Mulhouse</a>
+        </footer>
+    </div> 
+<script>
+    const mountedApp = app.mount('#app')
+
+</script>
+    </body>
+</html>
