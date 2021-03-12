@@ -21,22 +21,24 @@ body{
 }
 .conteneur{
     height: 100vh;
-    width: 100vh;
+    width:99vw;
     padding:1em;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 2fr 5fr 2fr;
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
+    grid-column-gap: 5px;
+    grid-row-gap: 2px;
 }
 
 h1,h2,tr{
     color:var(--txt);
+    
 }
 .entete{
     width: 100%;
-    display: in;
+    
     background-color: var(--bg-dark);
+    border:var(--border)
     
 }
 .contenu{
@@ -47,11 +49,24 @@ h1,h2,tr{
 /* ------------------Partie Le Boulanger----------------------- */
 #boulanger{
     display: flex;
+    justify-content: space-between;
+    padding:2em 1em 2em 1em;
+
+}
+#boulanger table{
     
+}
+#boulanger td{
+    background-color: var(--bg-light);
+    padding:1em;
+}
+#boulanger th{
+    background-color: var(--bg-dark);
+    padding:1em;
 }
 /*------------------Partie Boulangerie  --------------------------*/
 #boulangerie{
-    display: inline;
+    display: block;
 }
 #boulangerie>.entete{
     display: flex;
@@ -70,13 +85,95 @@ h1,h2,tr{
    max-width: 2em;
   
 }
-/*------------------Partie Commandes--------------------------*/
-#Commandes{
+#demarrer{
+    margin: 3px;
+    color: var(--txt);
+    background-color: var(--bg-light);
+    font-size: 11px;
+    padding: 5px;
+}
+#boulangerie table{
+    padding-top: 1em;
+    text-align: right;
+}
+#boulangerie table tr td{
+    padding-left: 2em;
     
 }
+
+.niveau::after {
+    display: inline-block;
+    content: "⚡";
+}
+.or::after{
+    display: inline-block;
+    content: "💰";
+}
+.farine::after{
+    display: inline-block;
+    content: "🥌";
+}
+.baguette::after{
+    display: inline-block;
+    content: "🥖";
+}
+
+.moulin::after {
+    display: inline-block;
+    content: "";
+    background-image: url('assets/mill.png');
+    background-size: 20px 20px;
+    width: 20px;
+    height:20px;
+}
+.plus{
+    display: inline-block;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    padding: -4px;
+    color:var(--txt2);
+    background-color: var(--bg-dark);
+    
+}
+
+
+
+
+/*------------------Partie Commandes--------------------------*/
+
+#commandes table th{
+    padding-right: 8px;
+    width: 1em;
+    text-align: center;
+    padding: 1px;
+    
+    
+}
+#commandes tr:first-child{
+    background-color: var(--bg-dark);
+    
+}
+ #commandes table{
+     width: 100%;
+ }
+#commandes table td{
+    text-align: center;
+    padding:4px;
+}
+
+#commandes table td:last-child{
+    width: 10em;
+    text-align: start;
+    
+}
+#commandes tr:nth-child(2n){
+    background-color: var(--bg-light);
+}
+
 /*------------------Partie Log--------------------------*/
 #log{
-   
+   min-height: 15em;
 }
 
 /*------------------footer--------------------------*/
@@ -85,4 +182,13 @@ footer{
 }
 
 
+a, a:visited {
+    color: var(--txt);
+}
 
+@media screen and (max-width:850px){
+    #boulanger{
+
+        display:block;
+    }
+}
