@@ -4,11 +4,17 @@ class Boulangerie
         this.open=false;
 
         this.level=1;
+        this.level_Price=100;
+
         this.mills=1;
+        this.mills_Price=80;
+
+        this.maintenance_Cost=0;
 
         this.gold=0;
         this.gold_Spend=0;
         this.gold_Total=0;
+
 
         this.flour=0;
         this.flour_Total=0;
@@ -16,7 +22,7 @@ class Boulangerie
         this.baguettes=0;
         this.baguettes_Total=0;
 
-        this.commandes=[];
+        this.commands=[];
     }
 
     // start(){
@@ -25,67 +31,104 @@ class Boulangerie
     //         this.flour_Total+= this.mills*1;
     //     } ,1000);
     // }
-
-
-    // fonction qui calcule le cout et ajoute un moulin
-    ajouter_Mills(){
-        
-        
-        if(this.mills===1 && this.gold>=80){
-            this.gold-=80;
-            this.gold_Spend+=80;
-            this.mills++;
-        }
-        else if(this.gold>=(80*1.5)**this.mills-1){
-
-            this.gold-=(80*1.5)**this.mills-1;
-            this.gold_Spend+= (80*1.5)**this.mills-1;
-            this.mills++;
-        }
-        else{
-            return "Vous n'avez pas assez d'argent !";
-        }
-        
+    //fonction qui calcule le cout d'ajout d'un moulin
+    calculer_Prix_Mills(){
+        this.mills_Price=(80*1.5)**this.mills-1;
     }
 
-    // fonction qui calcule le cout et ajoute un niveau
+    //fonction qui calcule le cout d'ajout d'un niveau
+    calculer_Prix_Levels(){
+        this.level_Price=(100*1.5)**this.level-1;
+    }
+    //fonction qui calcule le cout de fonctionnement de la boulangerie par seconde
+    calculer_maintenance(){
+        this.maintenance_Cost= 0.5*(this.level*this.mills); 
+    }
+
+    //fonction qui soustrait l'or utilisé et l'ajoute au total d'or dépensé, prend en parametre la quantite d'or
+    depenser_Gold(or){
+        this.gold-=or;
+        this.gold_Spend+=or;  
+    }
+    //fonction qui vérifie qu'il y'a assez d'or pour effectuer une action prend en parametre la quantite d'or
+    verif_Gold(or_Requis){
+        return this.gold>=or_Requis;
+    }
+
+    /*fonction qui vérifie qu'il y'a assez de farine pour effectuer une commande
+    verif_Flour(farine_Requise){
+        return this.flour>=farine_Requise;
+    }*/
+
+    //fonction qui simule la production de farine (sera appelée une fois par seconde)
+    produire_Flour(){
+        this.flour+=this.mills;
+        this.flour_Total+=this.mills;
+    }
+    //fonction qui simule la production de baguette (sera appelée une fois par seconde)
+    produire_baguette(){
+        this.baguettes+=this.level;
+        this.baguettes_Total+=this.level;
+        this.flour-=this.level+1;
+    }
+
+    // fonction qui ajoute un moulin utiliser verif_Gold avant
+    ajouter_Mills(){
+       
+        if(this.mills===1){
+            
+            this.depenser_Gold(this.mills_Price);
+            this.mills++;
+        }
+        else
+        { 
+            this.calculer_Prix_Mills();
+            this.depenser_Gold();
+            this.mills++;
+        }
+        calculer_maintenance(); 
+    }
+
+    // fonction qui ajoute un niveau (utiser verif_Gold avant)
     ajouter_Niveau(){
          
-        if(this.level===1 && this.gold>=100 ){
-            this.gold-=100;
-            this.gold_Spend+=100;
+        if(this.level===1  ){
+            this.depenser_Gold(level_Price);
             this.level++;
         }
-        else if(this.gold>=(100*1.5)**this.level-1){
-            this.gold-=(80*1.5)**this.level-1;
-            this.gold_Spend+= (80*1.5)**this.level-1;
+        else
+        {
+            this.calculer_Prix_Levels();
+            this.depenser_Gold(level_Price);
             this.level++;
         }
-        else{
-            return "Vous n'avez pas assez d'argent !"
-        }
+        calculer_maintenance();
     }
 
-    //fonction qui ouvre la boulangerie , demarre la production de farine , établie le cout de maintenance et la prélève
-    // elle sera rappelée une fois par seconde par l'app
+
+    /*fonction qui ouvre la boulangerie , demarre la production de farine , établie le cout de maintenance et la prélève
+     elle sera rappelée une fois par seconde par l'app*/
     fonctionner(){
 
-        this.flour+= this.mills;
-        this.flour_Total+= this.mills;
-
-        if(this.gold >= 0,05 *(this.level* this.mills)){
-
-            this.gold-=0,05 *(this.level* this.mills);
-            this.gold_Spend+=0,05 *(this.level* this.mills);
-        }
-        else{
-            return "GAME OVER";
+        this.produire_Flour();
+        
+        if(this.flour!==0){
+            this.produire_baguette();
         }
         
-        if(this.commandes !== []){
-            this.baguettes+= this.level;
+        if(this.verif_Gold(this.maintenance_Cost)){
+
+            this.depenser_Gold(this.maintenance_Cost)
         }
+        else{
+            this.open=false;
+            return "GAME OVER";
+        } 
+    }
+    //fonction qui permet d'accepter une commande, prend en parametre une Commande
+    accepter_Commands(command){
+        this.commands.push(command);
     }
 
-    
-}
+} 
+export { Boulangerie }
