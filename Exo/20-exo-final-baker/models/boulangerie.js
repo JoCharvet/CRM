@@ -2,6 +2,7 @@ class Boulangerie
 {
     constructor(){
         this.open=false;
+        this.lost=false;
 
         this.level=1;
         this.level_Price=100;
@@ -22,7 +23,9 @@ class Boulangerie
         this.baguettes=0;
         this.baguettes_Total=0;
 
-        this.commands=[];
+        this.commandes=[];
+        this.log=[];
+
     }
 
     // start(){
@@ -104,6 +107,12 @@ class Boulangerie
         }
         calculer_maintenance();
     }
+    // ajoute de l'or à la boulangerie
+    ajouter_Or(){
+        this.gold+=this.commandes[0].reward;
+        this.gold_Total+=this.commandes[0].reward;
+        return "la boulangerie a gagné "+this.commandes[0].reward+" Or";
+    }
 
 
     /*fonction qui ouvre la boulangerie , demarre la production de farine , établie le cout de maintenance et la prélève
@@ -125,10 +134,21 @@ class Boulangerie
             return "GAME OVER";
         } 
     }
+    
     //fonction qui permet d'accepter une commande, prend en parametre une Commande
-    accepter_Commands(command){
-        this.commands.push(command);
-    }
+    /*accepter_Commands(command){
+        let index =this.commandes.indexOf(command);
+        this.commands.unshift(command);
+        return "La commande "+index+" a été acceptée.";
 
+    }*/
+
+    //fonction qui vérifie si il y a assez de baguettes pour valider la commandes
+    /*valider_Commands(){
+        if(this.commands[0].nb_baguettes<=this.baguettes){
+            this.commands[0].splice(0,1);
+            this.ajouter_Or();
+        }
+    }*/
 } 
 export { Boulangerie }
