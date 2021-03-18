@@ -22,10 +22,10 @@
                         <th>Baguetttes produites</th>
                     </tr>
                     <tr>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>0</td>
+                        <td>{{ baker.gold }}</td>
+                        <td>{{ baker.gold_Spend }}</td>
+                        <td>{{ baker.floor }}</td>
+                        <td>{{ baker.baguettes_Total }}</td>
                     </tr>
                 </table>
             </div>
@@ -40,27 +40,27 @@
                         <table>
                             <tr>
                                 <th>Niveau</th>
-                                <td class="niveau">100</td>
-                                <td><button class="plus">+</button></td>
-                                <td class="or"></td>
+                                <td class="niveau">{{ baker.level }}</td>
+                                <td><button v-on:click="baker.ajouter_Niveau" class="plus">+</button></td>
+                                <td class="or">{{ baker.level_Price }}</td>
                             </tr>
                             <tr>
                                 <th>Moulins</th>
-                                <td class="moulin">1</td>
-                                <td><button class="plus">+</button></td>
-                                <td class="or">9999999</td>
+                                <td class="moulin">{{ baker.mills }}</td>
+                                <td><button v-on:click="baker.ajouter_Moulin" class="plus">+</button></td>
+                                <td class="or">{{ baker.mills_Price }}</td>
                             </tr>
                             <tr>
                                 <th>Or</th>
-                                <td class="or">9999999</td>
+                                <td class="or">{{ baker.gold }}</td>
                             </tr>
                             <tr>
                                 <th>Farine</th>
-                                <td class=farine></td>
+                                <td class=farine>{{ baker.floor }}</td>
                             </tr>
                             <tr>
                                 <th>Baguettes</th>
-                                <td class="baguette"></td>
+                                <td class="baguette">{{ baker.baguettes }}</td>
                             </tr>
                         </table>
 

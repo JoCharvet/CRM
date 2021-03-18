@@ -23,8 +23,8 @@ class Boulangerie
         this.baguettes=0;
         this.baguettes_Total=0;
 
-        this.commandes=[];
-        this.log=[];
+        
+        
 
     }
 
@@ -35,10 +35,9 @@ class Boulangerie
     //     } ,1000);
     // }
     //fonction qui calcule le cout d'ajout d'un moulin
-    calculer_Prix_Mills(){
+    calculer_Prix_Moulins(){
         this.mills_Price=(80*1.5)**this.mills-1;
     }
-
     //fonction qui calcule le cout d'ajout d'un niveau
     calculer_Prix_Levels(){
         this.level_Price=(100*1.5)**this.level-1;
@@ -47,7 +46,6 @@ class Boulangerie
     calculer_maintenance(){
         this.maintenance_Cost= 0.5*(this.level*this.mills); 
     }
-
     //fonction qui soustrait l'or utilisé et l'ajoute au total d'or dépensé, prend en parametre la quantite d'or
     depenser_Gold(or){
         this.gold-=or;
@@ -57,7 +55,6 @@ class Boulangerie
     verif_Gold(or_Requis){
         return this.gold>=or_Requis;
     }
-
     /*fonction qui vérifie qu'il y'a assez de farine pour effectuer une commande
     verif_Flour(farine_Requise){
         return this.flour>=farine_Requise;
@@ -76,7 +73,7 @@ class Boulangerie
     }
 
     // fonction qui ajoute un moulin utiliser verif_Gold avant
-    ajouter_Mills(){
+    ajouter_Moulin(){
        
         if(this.mills===1){
             
@@ -108,10 +105,10 @@ class Boulangerie
         calculer_maintenance();
     }
     // ajoute de l'or à la boulangerie
-    ajouter_Or(){
-        this.gold+=this.commandes[0].reward;
-        this.gold_Total+=this.commandes[0].reward;
-        return "la boulangerie a gagné "+this.commandes[0].reward+" Or";
+    ajouter_Or(or){
+        this.gold+=or;
+        this.gold_Total+=or;
+        //return "la boulangerie a gagné "+this.commandes[0].reward+" Or";
     }
 
 
@@ -131,7 +128,7 @@ class Boulangerie
         }
         else{
             this.open=false;
-            return "GAME OVER";
+            this.lost=true;
         } 
     }
     
