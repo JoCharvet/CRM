@@ -24,7 +24,7 @@
                     <tr>
                         <td>{{ baker.gold }}</td>
                         <td>{{ baker.gold_Spend }}</td>
-                        <td>{{ baker.floor }}</td>
+                        <td>{{ baker.flour }}</td>
                         <td>{{ baker.baguettes_Total }}</td>
                     </tr>
                 </table>
@@ -56,7 +56,7 @@
                             </tr>
                             <tr>
                                 <th>Farine</th>
-                                <td class=farine>{{ baker.floor }}</td>
+                                <td class=farine>{{ baker.flour }}</td>
                             </tr>
                             <tr>
                                 <th>Baguettes</th>
@@ -82,13 +82,13 @@
                             <th>🕗</th>
                             <th>🗣</th>
                         </tr>
-                        <tr>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>En attente...</td>
+                        <tr v-for="commande in commandes" :keys="commande.id">
+                            <td>{{ commande.id }}</td>
+                            <td>{{ commande.nb_baguettes }}</td>
+                            <td>{{ commande.price_baguette }}</td>
+                            <td>{{ commande.timer_to_accept }}</td>
+                            <td>{{ commande.timer_to_finish }}</td>
+                            <td>{{ commande.etat }}</td>
                         </tr>
                         <tr>
                             <td>0</td>
@@ -182,7 +182,7 @@
         </footer>
     </div> 
 <script>
-    const mountedApp = app.mount('#app')
+    const mountedApp = app.mount('#app');
 
 </script>
     </body>

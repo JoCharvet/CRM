@@ -1,17 +1,19 @@
 import { Boulangerie } from './models/boulangerie.js';
-import { Commandes} from './models/commandes.js';
+import { Commandes , } from './models/commandes.js';
 
 const myBaker = {
     data(){
         return {
             baker: new Boulangerie(), 
-            date: new Date(),
+            date: new Date(),            
             id_Count: 1,
-            commandes: [],
+            //commandes: new commande_Tab(),
             log:[]
+            
         }
     },
     mounted() {
+
 
     },
     methods: {
@@ -36,7 +38,7 @@ const myBaker = {
         //fonction qui crée une nouvelle commande
         creation_Commande(){
             if(this.date.getMilliseconds() %2===0){
-                this.commandes.find(commande =>  (commande.etat==="refusée"|| commande.etat==="annulée" || commande.etat === "livrée"))= new Commandes(this.baker.level , id_Count);
+                this.commandes.find(commande =>  (commande.etat==="refusée"|| commande.etat==="annulée..." || commande.etat === "livrée"))= new Commandes(this.baker.level , id_Count);
             }
         },
         //fonction qui parcours le tableau de commandes et gère les opération a faire sur les commandes en fonction des timers et du pain disponible
@@ -44,7 +46,7 @@ const myBaker = {
             this.commandes.forEach(commande => {
 
                 switch(commande.etat) {
-                        case "En attente":
+                        case "En attente...":
                             commande.timer_to_accept-=1;
                             this.annuler_commande(commande);
                             break;               
