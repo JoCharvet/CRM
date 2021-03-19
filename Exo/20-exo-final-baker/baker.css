@@ -163,14 +163,26 @@ h1,h2,tr{
 }
 
 #commandes table td:last-child{
-    width: 10em;
+    min-width: 10em;
     text-align: start;
     
 }
 #commandes tr:nth-child(2n){
     background-color: var(--bg-light);
 }
-
+.yn{
+    background-color: var(--bg-dark);
+    color: var(--txt);
+    padding:5px 10px;
+    margin:5px;
+}
+.prgb{
+    display: inline-block;
+    border-radius: 5px;
+    background-color: green;
+    color: greenyellow;
+    width: 7em;
+}
 /*------------------Partie Log--------------------------*/
 #log{
    min-height: 15em;

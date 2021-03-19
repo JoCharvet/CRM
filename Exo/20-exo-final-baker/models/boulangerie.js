@@ -10,11 +10,11 @@ class Boulangerie
         this.mills=1;
         this.mills_Price=80;
 
-        this.maintenance_Cost=0;
+        this.maintenance_Cost=this.maintenance_Cost= 0.5*this.level*this.mills;
 
-        this.gold=0;
+        this.gold=100;
         this.gold_Spend=0;
-        this.gold_Total=0;
+        this.gold_Total=100;
 
 
         this.flour=0;
@@ -44,17 +44,14 @@ class Boulangerie
     }
     //fonction qui calcule le cout de fonctionnement de la boulangerie par seconde
     calculer_maintenance(){
-        this.maintenance_Cost= 0.5*(this.level*this.mills); 
+        this.maintenance_Cost= 0.5*this.level*this.mills; 
     }
     //fonction qui soustrait l'or utilisé et l'ajoute au total d'or dépensé, prend en parametre la quantite d'or
     depenser_Gold(or){
         this.gold-=or;
         this.gold_Spend+=or;  
     }
-    //fonction qui vérifie qu'il y'a assez d'or pour effectuer une action prend en parametre la quantite d'or
-    verif_Gold(or_Requis){
-        return this.gold>=or_Requis;
-    }
+    
     /*fonction qui vérifie qu'il y'a assez de farine pour effectuer une commande
     verif_Flour(farine_Requise){
         return this.flour>=farine_Requise;
@@ -83,7 +80,7 @@ class Boulangerie
         else
         { 
             this.calculer_Prix_Mills();
-            this.depenser_Gold();
+            this.depenser_Gold(this.mills_Price);
             this.mills++;
         }
         calculer_maintenance(); 
@@ -118,13 +115,13 @@ class Boulangerie
 
         this.produire_Flour();
         
-        if(this.flour!==0){
+        if(this.flour>0){
             this.produire_baguette();
         }
         
-        if(this.verif_Gold(this.maintenance_Cost)){
+        if(this.gold>0){
 
-            this.depenser_Gold(this.maintenance_Cost)
+            this.depenser_Gold(this.maintenance_Cost);
         }
         else{
             this.open=false;
@@ -148,4 +145,4 @@ class Boulangerie
         }
     }*/
 } 
-export { Boulangerie }
+export { Boulangerie };

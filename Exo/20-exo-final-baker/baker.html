@@ -22,8 +22,8 @@
                         <th>Baguetttes produites</th>
                     </tr>
                     <tr>
-                        <td>{{ baker.gold }}</td>
-                        <td>{{ baker.gold_Spend }}</td>
+                        <td>{{ baker.gold.toFixed(2) }}</td>
+                        <td>{{ baker.gold_Spend.toFixed(2) }}</td>
                         <td>{{ baker.flour }}</td>
                         <td>{{ baker.baguettes_Total }}</td>
                     </tr>
@@ -32,7 +32,8 @@
             <div id="boulangerie" class="contenu ">
                 <div class="entete">
                     <h2>Boulangerie</h2>
-                    <button id="demarrer">Ouvrir la boulangerie</button>
+                    <button v-if="this.baker.open===false" id="demarrer" v-on:click="ouvrir_Boulangerie">Ouvrir la boulangerie</button>
+                    <button v-else id="demarrer" v-on:click="fermer_Boulangerie">Fermer la boulangerie</button>
                 </div>
                 <div class="corp">
                     <img src="assets/baker.jpg" alt="Une boulangerie">
@@ -42,17 +43,17 @@
                                 <th>Niveau</th>
                                 <td class="niveau">{{ baker.level }}</td>
                                 <td><button v-on:click="baker.ajouter_Niveau" class="plus">+</button></td>
-                                <td class="or">{{ baker.level_Price }}</td>
+                                <td class="or">{{ baker.level_Price.toFixed(2) }}</td>
                             </tr>
                             <tr>
                                 <th>Moulins</th>
                                 <td class="moulin">{{ baker.mills }}</td>
                                 <td><button v-on:click="baker.ajouter_Moulin" class="plus">+</button></td>
-                                <td class="or">{{ baker.mills_Price }}</td>
+                                <td class="or">{{ baker.mills_Price.toFixed(2) }}</td>
                             </tr>
                             <tr>
                                 <th>Or</th>
-                                <td class="or">{{ baker.gold }}</td>
+                                <td class="or">{{ baker.gold.toFixed(2) }}</td>
                             </tr>
                             <tr>
                                 <th>Farine</th>
@@ -82,86 +83,17 @@
                             <th>🕗</th>
                             <th>🗣</th>
                         </tr>
-                        <tr v-for="commande in commandes" :keys="commande.id">
+                        <tr v-for="commande in commandes">
                             <td>{{ commande.id }}</td>
-                            <td>{{ commande.nb_baguettes }}</td>
-                            <td>{{ commande.price_baguette }}</td>
+                            <td>{{ commande.nb_baguettes_command }}</td>
+                            <td>{{ commande.price_baguette.toFixed(2) }}</td>
                             <td>{{ commande.timer_to_accept }}</td>
                             <td>{{ commande.timer_to_finish }}</td>
-                            <td>{{ commande.etat }}</td>
+                            <td v-if="commande.etat === 'En attente... || commande.id !==0'"><button v-on:click="baker.accepter_commande" class="yn">Y</button><button v-on:click="baker.refuser_commande" class="yn">N</button></td>
+                            <td v-else-if="commande.etat === 'Acceptée'" ><progress class="prgb" max="{{ commande.nb_baguettes_command }}" value="{{ baker.baguettes }}"></progress> {{ baker.baguettes }}/{{ commande.nb_baguettes_command }}</td>
+                            <td v-else>{{ commande.etat }}</td>
                         </tr>
-                        <tr>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>En attente...</td>
-                        </tr>
-                        <tr>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>En attente...</td>
-                        </tr>
-                        <tr>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>En attente...</td>
-                        </tr>
-                        <tr>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>En attente...</td>
-                        </tr>
-                        <tr>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>En attente...</td>
-                        </tr>
-                        <tr>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>En attente...</td>
-                        </tr>
-                        <tr>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>En attente...</td>
-                        </tr>
-                        <tr>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>En attente...</td>
-                        </tr>
-                        <tr>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>En attente...</td>
-                        </tr>
+                     
                     </table>
                 
                 </div>
@@ -170,6 +102,8 @@
             <div id="log" class="contenu">
                 <div class="entete">
                     <h2>Log</h2>
+                    <p v-for="ligne in logs"></p>
+                    {{ ligne }}
                 </div>
                 <div class="corp">
 
