@@ -23,7 +23,8 @@ const myBaker = {
             id_Count: 1,           
             commandes:comdep,
             logs : [] ,
-            date : new Date()       
+            date : new Date() ,
+            inter: 0,      
         }
     },
     mounted() {
@@ -36,25 +37,32 @@ const myBaker = {
             this.baker.open=true;
 
             if(this.baker.open===true && this.baker.lost===false){               
-                setInterval(() =>{
+                 this.inter =setInterval(() =>{
                      this.date=new Date();           
                      this.baker.fonctionner();
                     if(this.date.getMilliseconds() %2===0){               
                         this.creation_Commande();
                     }
-                    this.gestion_Commande()                                                                    
+                    this.gestion_Commande();
+                                                                              
                 },1000);              
-            } 
+            }
+            else{
+                this.baker=false;
+                clearInterval(this.inter);
+            }
         },
         //fonction qui permet de mettre en pause le jeu , de fermer la boulangerie
         fermer_Boulangerie(){
-
+            
             this.baker.open=false;
         },
         //fonction qui crée une nouvelle commande
         creation_Commande(){
-           
-                this.commandes[this.commandes.find(commande =>  (commande.etat==="Refusée"|| commande.etat==="Annulée..." || commande.etat === "Livrée")||(commande.etat==="En attente..."&& commande.id===0))]= new Commandes(this.baker.level , this.id_Count);
+                this.commandes.splice(this.commandes.find(commande => 
+                     (commande.etat==="Refusée"|| commande.etat==="Annulée..." ||
+                      commande.etat === "Livrée")||(commande.etat==="En attente..." 
+                      && commande.id===0)),1,new Commandes(this.baker.level , this.id_Count));
                 this.id_Count++;
             
         },

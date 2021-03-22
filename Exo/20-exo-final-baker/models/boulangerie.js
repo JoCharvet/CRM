@@ -115,18 +115,20 @@ class Boulangerie
 
         this.produire_Flour();
         
-        if(this.flour>0){
-            this.produire_baguette();
-        }
-        
-        if(this.gold>0){
+        if(this.open===true){
+            if(this.flour>0){
+                this.produire_baguette();
+            }
+            
+            if(this.gold>this.maintenance_Cost){
 
-            this.depenser_Gold(this.maintenance_Cost);
+                this.depenser_Gold(this.maintenance_Cost);
+            }
+            else{
+                this.open=false;
+                this.lost=true;
+            } 
         }
-        else{
-            this.open=false;
-            this.lost=true;
-        } 
     }
     
     //fonction qui permet d'accepter une commande, prend en parametre une Commande

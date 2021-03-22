@@ -10,6 +10,9 @@ class Commandes{
         this.timer_to_finish=90;
         
     }
+    
+        
+    
     /*commandes_sample(){
         let com_Sample=new Commandes();
         com_Sample.id=0;
@@ -20,6 +23,7 @@ class Commandes{
         com_Sample.timer_to_finish=0;
         return com_Sample;
     }
+    
 
     commmande_tab(){
         let com=[];

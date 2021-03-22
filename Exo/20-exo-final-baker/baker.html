@@ -32,8 +32,8 @@
             <div id="boulangerie" class="contenu ">
                 <div class="entete">
                     <h2>Boulangerie</h2>
-                    <button v-if="this.baker.open===false" id="demarrer" v-on:click="ouvrir_Boulangerie">Ouvrir la boulangerie</button>
-                    <button v-else id="demarrer" v-on:click="fermer_Boulangerie">Fermer la boulangerie</button>
+                    <button v-if="this.baker.open===false" id="demarrer" v-on:click="ouvrir_Boulangerie">{{ this.baker.open === true ? "Ouvrir la boulangerie" : "fermer la boulangerie" }}</button>
+                    <!--<button v-else id="demarer" v-on:click="fermer_Boulangerie">Fermer la boulangerie</button> -->
                 </div>
                 <div class="corp">
                     <img src="assets/baker.jpg" alt="Une boulangerie">
@@ -102,7 +102,7 @@
             <div id="log" class="contenu">
                 <div class="entete">
                     <h2>Log</h2>
-                    <p v-for="ligne in logs"></p>
+                    <p v-if ="log !== []" v-for="ligne in logs"></p>
                     {{ ligne }}
                 </div>
                 <div class="corp">
