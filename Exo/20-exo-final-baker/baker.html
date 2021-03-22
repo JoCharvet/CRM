@@ -32,8 +32,8 @@
             <div id="boulangerie" class="contenu ">
                 <div class="entete">
                     <h2>Boulangerie</h2>
-                    <button v-if="this.baker.open===false" id="demarrer" v-on:click="ouvrir_Boulangerie">{{ this.baker.open === true ? "Ouvrir la boulangerie" : "fermer la boulangerie" }}</button>
-                    <!--<button v-else id="demarer" v-on:click="fermer_Boulangerie">Fermer la boulangerie</button> -->
+                    <button v-if="this.baker.open === false" id="demarrer" v-on:click="ouvrir_Boulangerie">Ouvrir la boulangerie</button>
+                    <button v-else id="demarrer" v-on:click="fermer_Boulangerie">Fermer la boulangerie</button> 
                 </div>
                 <div class="corp">
                     <img src="assets/baker.jpg" alt="Une boulangerie">
@@ -42,13 +42,13 @@
                             <tr>
                                 <th>Niveau</th>
                                 <td class="niveau">{{ baker.level }}</td>
-                                <td><button v-on:click="baker.ajouter_Niveau" class="plus">+</button></td>
+                                <td><button v-on:click="this.baker.ajouter_Niveau" class="plus">+</button></td>
                                 <td class="or">{{ baker.level_Price.toFixed(2) }}</td>
                             </tr>
                             <tr>
                                 <th>Moulins</th>
                                 <td class="moulin">{{ baker.mills }}</td>
-                                <td><button v-on:click="baker.ajouter_Moulin" class="plus">+</button></td>
+                                <td><button v-on:click="this.baker.ajouter_Moulin" class="plus">+</button></td>
                                 <td class="or">{{ baker.mills_Price.toFixed(2) }}</td>
                             </tr>
                             <tr>
@@ -64,8 +64,6 @@
                                 <td class="baguette">{{ baker.baguettes }}</td>
                             </tr>
                         </table>
-
-                    
                 </div>
 
             </div>
@@ -85,11 +83,11 @@
                         </tr>
                         <tr v-for="commande in commandes">
                             <td>{{ commande.id }}</td>
-                            <td>{{ commande.nb_baguettes_command }}</td>
+                            <td>{{ commande.nb_baguettes_command.toFixed(2) }}</td>
                             <td>{{ commande.price_baguette.toFixed(2) }}</td>
-                            <td>{{ commande.timer_to_accept }}</td>
-                            <td>{{ commande.timer_to_finish }}</td>
-                            <td v-if="commande.etat === 'En attente... || commande.id !==0'"><button v-on:click="baker.accepter_commande" class="yn">Y</button><button v-on:click="baker.refuser_commande" class="yn">N</button></td>
+                            <td>{{ commande.reward.toFixed(2) }}</td>
+                            <td >{{ commande.etat==="Acceptée" ? commande.timer_to_finish : commande.timer_to_accept }}</td>
+                            <td v-if="commande.etat === 'En attente...' && commande.id !== 0"><button v-on:click="accepter_Commande(commande)" class="yn">Y</button><button v-on:click="refuser_commande(commande)" class="yn">N</button></td>
                             <td v-else-if="commande.etat === 'Acceptée'" ><progress class="prgb" max="{{ commande.nb_baguettes_command }}" value="{{ baker.baguettes }}"></progress> {{ baker.baguettes }}/{{ commande.nb_baguettes_command }}</td>
                             <td v-else>{{ commande.etat }}</td>
                         </tr>
