@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Baker</title>
+        <link rel="stylesheet" href="baker.css">
+        <script src="https://unpkg.com/vue@next" defer></script>
+        <script src="main.js" type="module" defer></script>
+    </head>
+
+    <body>
+       
+        <main id="app">
+            <header class="position">
+            <h1>Le Boulanger</h1>
+      
+            <table>
+               
+                <tr>
+                    <th>Or gagné</th>
+                    <th>Or dépensé</th>
+                    <th>Farine produite</th>
+                    <th>Baguettes produites</th>
+                </tr>
+                <tr>
+
+                    <td>{{ bakery.totalGoldsEarned }}</td>
+                    <td>{{ bakery.totalGoldsSpent.toFixed(2) }}</td>
+                    <td>{{ bakery.totalFlourProduced }}</td>
+                    <td>{{ bakery.totalBaguettesProduced }}</td>
+                </tr>
+            </table>
+       
+            </header>
+            <section id="bakery">
+                <header>
+                    <h2>Boulangerie</h2>
+
+                    <button class="start" v-on:click="startStop">{{ bakery.running ? "Fermer" : "Ouvrir" }} la boulangerie</button>
+                </header>
+                <div>
+                    <img src="./assets/baker.jpg" alt="">
+                    <table>
+                        <tr>
+                            <th>Niveau</th> 
+                            <td class="lightning">{{ bakery.level }}</td>
+                            <td class="tdbtn">
+                                <button class="plus" v-on:click="levelUp">+</button>
+                            </td>
+                            <td class="gold last">{{ bakery.level_price.toFixed(0) }}</td>  
+                        </tr>
+                        <tr>
+                            <th>Moulins</th>
+                            <td class="mills">{{ bakery.mills }}</td>
+                            <td class="tdbtn">
+                                <button class="plus" v-on:click="buyMill">+</button>
+                            </td >
+                            <td class="gold last">{{ bakery.mills_price.toFixed(0) }}</td>
+                        </tr>
+                        <tr>     
+                            <th>Or</th>   
+                            <td class="gold">{{ bakery.golds.toFixed(2) }}</td> 
+                        </tr>
+                        <tr>
+                            <th>Farine</th>      
+                            <td class="flour">{{ bakery.flour }} </td>
+                        </tr>
+                        <tr>
+                            <th>Baguettes</th> 
+                            <td class="baguette">{{ bakery.baguettes }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+            <section id="orders">
+                <header>
+                    <h1>Commandes</h1>
+                </header>
+                <div>
+                    <table>
+                        <tr>
+                            <th>📲</th>
+                            <th>🥖</th>
+                            <th>💰/🥖</th>
+                            <th>💰💰💰</th>
+                            <th>⌚</th>
+                            <th>&#128483;</th>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>En attente...</td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>En attente...</td>
+                        </tr>
+                        <tr>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>En attente...</td>
+                        </tr>
+                    </table>
+                </div>
+
+            </section>
+        </main>
+
+        <footer>
+            <a href="http://www.arfp.asso.fr">Centre de Réadaptation de Mulhouse</a>
+        </footer>
+    </body>
+</html>
